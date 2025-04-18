@@ -12,7 +12,7 @@ sys.path.insert(0, parentdir)
 
 from xai_transformer import make_p_layer, BertPooler, BertAttention
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-from IMDB.imdb import load_imdb, MovieReviewDataset, create_data_loader
+from imdb.imdb import load_imdb, MovieReviewDataset, create_data_loader
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, BertForSequenceClassification
 from sklearn.model_selection import train_test_split
 
