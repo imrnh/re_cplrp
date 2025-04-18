@@ -107,7 +107,7 @@ config = Config()
 config.detach_layernorm = False # Detaches the attention-block-output LayerNorm
 config.detach_kq = False
 model = BertAttention(config, pretrained_embeds)
-model.load_state_dict(params)
+# model.load_state_dict(params)
 model.to(device)
 models = {'none': model}
 
@@ -116,7 +116,7 @@ config = Config()
 config.detach_layernorm = False # Detaches the attention-block-output LayerNorm
 config.detach_kq = True
 model = BertAttention(config, pretrained_embeds)
-model.load_state_dict(params)
+# model.load_state_dict(params)
 model.to(device)
 models['detach_KQ'] = model
 
@@ -124,7 +124,7 @@ models['detach_KQ'] = model
 # Transformer Model 
 config = Config()
 model = BertAttention(config, pretrained_embeds)
-model.load_state_dict(params)
+# model.load_state_dict(params)
 model.to(device)
 models['detach_KQ_LNorm'] = model
 
@@ -135,7 +135,7 @@ config.detach_layernorm = True # Detaches the attention-block-output LayerNorm
 config.detach_mean = False # Detaches the attention-block-output LayerNorm
 config.detach_kq = True
 model = BertAttention(config, pretrained_embeds)
-model.load_state_dict(params)
+# model.load_state_dict(params)
 model.to(device)
 models['detach_KQ_LNorm_Norm'] = model
 
