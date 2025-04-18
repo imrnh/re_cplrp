@@ -72,7 +72,7 @@ for name, param in bert_model.named_parameters():
         
 pretrained_embeds = bert_model.bert.embeddings
 
-params = torch.load('SST/sst2-3layer-model.pt', map_location=torch.device(device))
+# params = torch.load('SST/sst2-3layer-model.pt', map_location=torch.device(device))
 
 def rename_params(key):
     for k_ in ['key','query', 'value']:
@@ -85,7 +85,7 @@ config = Config()
 config.detach_layernorm = False # Detaches the attention-block-output LayerNorm
 config.detach_kq = False
 model = BertAttention(config, pretrained_embeds)
-model.load_state_dict(params)
+# model.load_state_dict(params)
 model.to(device)
 models = {'none': model}
 
@@ -95,7 +95,7 @@ config = Config()
 config.detach_layernorm = False # Detaches the attention-block-output LayerNorm
 config.detach_kq = True
 model = BertAttention(config, pretrained_embeds)
-model.load_state_dict(params)
+# model.load_state_dict(params)
 model.to(device)
 models['detach_KQ'] = model
 
@@ -104,7 +104,7 @@ print('Detach SM +  LN')
 # Transformer Model 
 config = Config()
 model = BertAttention(config, pretrained_embeds)
-model.load_state_dict(params)
+# model.load_state_dict(params)
 model.to(device)
 models['detach_KQ_LNorm'] = model
 
@@ -115,7 +115,7 @@ config.detach_layernorm = True # Detaches the attention-block-output LayerNorm
 config.detach_mean = False # Detaches the attention-block-output LayerNorm
 config.detach_kq = True
 model = BertAttention(config, pretrained_embeds)
-model.load_state_dict(params)
+# model.load_state_dict(params)
 model.to(device)
 models['detach_KQ_LNorm_Norm'] = model
 
